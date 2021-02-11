@@ -76,6 +76,12 @@ class Camera2Loader(private val activity: Activity) {
         return cameraManager.cameraIdList.size > 1
     }
 
+    fun setOnPreviewFrameListener(
+        onPreviewFrame: (data: ByteArray, width: Int, height: Int) -> Unit
+    ) {
+        this.onPreviewFrame = onPreviewFrame
+    }
+
     @SuppressLint("MissingPermission")
     private fun setUpCamera() {
         val cameraId = getCameraId(cameraFacing) ?: return
